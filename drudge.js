@@ -11,14 +11,16 @@
   };
 
   loadLinks = function() {
-    var anchor, data, found, record, url;
+    var anchor, data, found, index, record, url, _ref;
     if (data = localStorage.getItem("drudge.js.links")) {
       data = JSON.parse(data);
     } else {
       data = [];
     }
     found = [];
-    for (anchor in document.getElementsByTagName("a")) {
+    _ref = document.getElementsByTagName("a");
+    for (index in _ref) {
+      anchor = _ref[index];
       url = anchor.attributes["a"].value;
       found.push(url);
       if (data[url]) {
