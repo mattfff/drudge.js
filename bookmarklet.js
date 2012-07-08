@@ -1,1 +1,1 @@
-javascript:(function(){drudge_js=document.createElement('SCRIPT');drudge_js.type='text/javascript';drudge_js.src='https://raw.github.com/mattfff/drudge.js/master/drudge.js';document.getElementsByTagName('head')[0].appendChild(drudge_js);})();
+javascript:(function(){drudge_js=document.createElement('SCRIPT');drudge_js.type='text/javascript';drudge_js.src='https://raw.github.com/mattfff/drudge.js/master/drudge.js?' + Math.round(Math.random()*1000);document.getElementsByTagName('head')[0].appendChild(drudge_js);})();
