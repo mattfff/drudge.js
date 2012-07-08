@@ -12,7 +12,7 @@ loadLinks = ->
     data = [];
 
   found = [];
-  for anchor of document.getElementByTagName "a"
+  for anchor of document.getElementsByTagName "a"
     url = anchor.attributes["a"].value;
     found.push url;
     
