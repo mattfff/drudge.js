@@ -46,7 +46,7 @@
         anchor.setAttribute('style', "color: green;");
       } else {
         if (data[url].views < 20) opacity = 1 - (data[url].views / 20);
-        if (opacity < 0) opacity = 0;
+        if (opacity < 0.3) opacity = 0.3;
         anchor.setAttribute('style', "opacity: " + opacity);
       }
     }
@@ -88,6 +88,7 @@
   };
 
   if (checkRequirements()) {
+    clearInterval(timer);
     loadLinks();
     loadUI();
     loadStyles();
