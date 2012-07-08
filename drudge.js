@@ -31,16 +31,15 @@
           text: anchor.text
         };
       }
+      console.log("test");
       if (data[url].views === 1) anchor.setAttribute('style', "color: green;");
       if (data[url].views > 1) anchor.setAttribute('style', "color: blue;");
     }
-    console.log("cool");
     for (url in data) {
       record = data[url];
       if (!(found.indexOf(url) > 0)) delete data[url];
     }
-    localStorage.setItem("drudge.js.links", JSON.stringify(data));
-    return console.log(data);
+    return localStorage.setItem("drudge.js.links", JSON.stringify(data));
   };
 
   if (checkRequirements()) {

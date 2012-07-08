@@ -20,18 +20,14 @@ loadLinks = ->
       data[url].views++;
     else
       data[url] = views: 1, text: anchor.text;
-
+    console.log "test"
     anchor.setAttribute 'style', "color: green;" if data[url].views == 1;
     anchor.setAttribute 'style', "color: blue;" if data[url].views > 1;
-  
-  console.log "cool"
   
   for url, record of data
     delete data[url] unless found.indexOf(url) > 0
 
   localStorage.setItem "drudge.js.links", JSON.stringify(data)
-
-  console.log data
 
 if checkRequirements()
   loadLinks();
