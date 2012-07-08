@@ -1,10 +1,9 @@
 (function() {
-  var checkRequirements, loadLinks,
-    __indexOf = Array.prototype.indexOf || function(item) { for (var i = 0, l = this.length; i < l; i++) { if (i in this && this[i] === item) return i; } return -1; };
+  var checkRequirements, loadLinks;
 
   checkRequirements = function() {
     try {
-      return __indexOf.call(window, 'localStorage') >= 0 && window['localStorage'] !== null;
+      return window.localStorage && window['localStorage'] !== null;
     } catch (error) {
       return false;
     }

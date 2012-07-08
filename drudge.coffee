@@ -1,6 +1,6 @@
 checkRequirements = ->
   try
-    return 'localStorage' in window && window['localStorage'] != null;
+    return window.localStorage && window['localStorage'] != null;
   catch error
     return false;
   true;
