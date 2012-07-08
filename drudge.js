@@ -34,6 +34,7 @@
       if (data[url].views === 1) anchor.setAttribute('style', "color: green;");
       if (data[url].views > 1) anchor.setAttribute('style', "color: blue;");
     }
+    console.log(data);
     for (url in data) {
       record = data[url];
       if (!(found.indexOf(url) > 0)) delete data[url];
