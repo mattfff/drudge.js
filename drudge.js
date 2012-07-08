@@ -38,7 +38,8 @@
       if (data[url].views === 1) {
         anchor.setAttribute('style', "color: green;");
       } else {
-        if (data[url].views < 10) opacity = (data[url].views / 20) + 0.5;
+        if (data[url].views < 20) opacity = 1 - (data[url].views / 20);
+        if (opacity < 0) opacity = 0;
         anchor.setAttribute('style', "opacity: " + opacity);
       }
     }

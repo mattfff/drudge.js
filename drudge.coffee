@@ -29,7 +29,9 @@ loadLinks = ->
     if data[url].views == 1
       anchor.setAttribute 'style', "color: green;"
     else
-      opacity = (data[url].views / 20) + 0.5 if data[url].views < 10
+      opacity = 1 - (data[url].views / 20) if data[url].views < 20
+      opacity = 0 if opacity < 0
+
       anchor.setAttribute 'style', "opacity: " + opacity
 
   for own url, record of data
