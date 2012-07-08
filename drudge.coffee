@@ -13,7 +13,7 @@ loadLinks = ->
 
   found = [];
   for index, anchor of document.getElementsByTagName "a"
-    url = anchor.attributes["href"].value;
+    url = anchor.getAttribute "href";
     found.push url;
     
     if data[url]
