@@ -38,7 +38,7 @@
       record = data[url];
       if (!(found.indexOf(url) > 0)) delete data[url];
     }
-    return localStorage.setItem("drudge.js.links", data);
+    return localStorage.setItem("drudge.js.links", JSON.stringify(data));
   };
 
   if (checkRequirements()) {

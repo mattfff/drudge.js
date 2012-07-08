@@ -27,7 +27,7 @@ loadLinks = ->
   for url, record of data
     delete data[url] unless found.indexOf(url) > 0
 
-  localStorage.setItem "drudge.js.links", data
+  localStorage.setItem "drudge.js.links", JSON.stringify(data)
 
 if checkRequirements()
   loadLinks();
