@@ -18,7 +18,7 @@
       data = [];
     }
     found = [];
-    for (anchor in document.getElementByTagName("a")) {
+    for (anchor in document.getElementsByTagName("a")) {
       url = anchor.attributes["a"].value;
       found.push(url);
       if (data[url]) {
