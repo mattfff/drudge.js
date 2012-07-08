@@ -4,8 +4,11 @@ checkRequirements = ->
   catch error
     return false
   
-  return false if window.location.href.indexOf "drudgereport.com" >= 0
   true;
+
+checkContext = ->
+  return false unless document.body.getAttribute("class") == null || document.body.getAttribute("class").indexOf("drudge_js_ran") < 0
+  return false unless window.location.href.indexOf("drudgereport.com") >= 0
 
 loadLinks = ->
   if data = localStorage.getItem("drudge.js.links")
@@ -20,6 +23,8 @@ loadLinks = ->
     continue if url == "http://www.drudgereport.com/"
 
     found.push url;
+    
+    anchor.setAttribute "target", "_blank"
 
     if data[url]
       data[url].views++;
@@ -55,9 +60,21 @@ loadUI = ->
     localStorage.removeItem("drudge.js.links")
     loadLinks()
 
+loadStyles = ->
+  styles = document.createElement "style"
+  styles.type = "text/css"
+
+  style_text = "a:visited { opacity: 0.5; color: blue; };"
+  if styles.styleSheet
+    styles.styleSheet.cssText = style_text
+  else 
+    styles.appendChild(document.createTextNode(style_text))
+
+  document.getElementsByTagName("head")[0].appendChild(styles)
+
 if checkRequirements()
-  if document.body.getAttribute("class") == null || document.body.getAttribute("class").indexOf("drudge_js_ran") < 0
-    loadLinks();
-    loadUI();
+  loadLinks();
+  loadUI();
+  loadStyles();
 else
   alert "You're not at drudgereport.com, or your browser can't support this tool. Supported browsers are IE9, Chrome, Safari, or Firefox"

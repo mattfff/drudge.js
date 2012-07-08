@@ -1,5 +1,5 @@
 (function() {
-  var checkRequirements, loadLinks, loadUI,
+  var checkContext, checkRequirements, loadLinks, loadStyles, loadUI,
     __hasProp = Object.prototype.hasOwnProperty;
 
   checkRequirements = function() {
@@ -8,8 +8,14 @@
     } catch (error) {
       return false;
     }
-    if (window.location.href.indexOf("drudgereport.com" >= 0)) return false;
     return true;
+  };
+
+  checkContext = function() {
+    if (!(document.body.getAttribute("class") === null || document.body.getAttribute("class").indexOf("drudge_js_ran") < 0)) {
+      return false;
+    }
+    if (!(window.location.href.indexOf("drudgereport.com") >= 0)) return false;
   };
 
   loadLinks = function() {
@@ -27,6 +33,7 @@
       if (url.length === 0) continue;
       if (url === "http://www.drudgereport.com/") continue;
       found.push(url);
+      anchor.setAttribute("target", "_blank");
       if (data[url]) {
         data[url].views++;
       } else {
@@ -67,11 +74,23 @@
     };
   };
 
-  if (checkRequirements()) {
-    if (document.body.getAttribute("class") === null || document.body.getAttribute("class").indexOf("drudge_js_ran") < 0) {
-      loadLinks();
-      loadUI();
+  loadStyles = function() {
+    var style_text, styles;
+    styles = document.createElement("style");
+    styles.type = "text/css";
+    style_text = "a:visited { opacity: 0.5; color: blue; };";
+    if (styles.styleSheet) {
+      styles.styleSheet.cssText = style_text;
+    } else {
+      styles.appendChild(document.createTextNode(style_text));
     }
+    return document.getElementsByTagName("head")[0].appendChild(styles);
+  };
+
+  if (checkRequirements()) {
+    loadLinks();
+    loadUI();
+    loadStyles();
   } else {
     alert("You're not at drudgereport.com, or your browser can't support this tool. Supported browsers are IE9, Chrome, Safari, or Firefox");
   }
