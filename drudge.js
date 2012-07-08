@@ -31,10 +31,10 @@
           text: anchor.text
         };
       }
-      console.log("test");
       if (data[url].views === 1) anchor.setAttribute('style', "color: green;");
       if (data[url].views > 1) anchor.setAttribute('style', "color: blue;");
     }
+    console.log("fired");
     for (url in data) {
       record = data[url];
       if (!(found.indexOf(url) > 0)) delete data[url];
