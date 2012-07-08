@@ -29,6 +29,7 @@ loadLinks = ->
 
   localStorage.setItem "drudge.js.links", JSON.stringify(data)
 
+  console.log data
 if checkRequirements()
   loadLinks();
 else
