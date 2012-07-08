@@ -24,7 +24,7 @@ loadLinks = ->
     anchor.setAttribute 'style', "color: green;" if data[url].views == 1;
     anchor.setAttribute 'style', "color: blue;" if data[url].views > 1;
   
-  console.log data
+  console.log "cool"
   
   for url, record of data
     delete data[url] unless found.indexOf(url) > 0
