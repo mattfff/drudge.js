@@ -31,16 +31,8 @@
           text: anchor.text
         };
       }
-      if (data[url].views === 1) {
-        anchor.attribute["style"] = {
-          value: "color: green;"
-        };
-      }
-      if (data[url].views > 1) {
-        anchor.attribute["style"] = {
-          value: "color: blue;"
-        };
-      }
+      if (data[url].views === 1) anchor.setAttribute('style', "color: green;");
+      if (data[url].views > 1) anchor.setAttribute('style', "color: blue;");
     }
     for (url in data) {
       record = data[url];
