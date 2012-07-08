@@ -21,7 +21,7 @@
     _ref = document.getElementsByTagName("a");
     for (index in _ref) {
       anchor = _ref[index];
-      url = anchor.attributes["a"].value;
+      url = anchor.attribute["a"].value;
       found.push(url);
       if (data[url]) {
         data[url].views++;
