@@ -1,1 +1,1 @@
-javascript:(function(){_my_script=document.createElement('SCRIPT');_my_script.type='text/javascript';_my_script.src='https://raw.github.com/mattfff/drudge.js/master/drudge.js';document.getElementsByTagName('head')[0].appendChild(_my_script);})();
+javascript:(function(){drudge_js=document.createElement('SCRIPT');drudge_js.type='text/javascript';drudge_js.src='https://raw.github.com/mattfff/drudge.js/master/drudge.js';document.getElementsByTagName('head')[0].appendChild(drudge_js);})();
