@@ -21,7 +21,7 @@
     _ref = document.getElementsByTagName("a");
     for (index in _ref) {
       anchor = _ref[index];
-      url = anchor.attribute["a"].value;
+      url = anchor.attributes["href"].value;
       found.push(url);
       if (data[url]) {
         data[url].views++;
@@ -31,8 +31,16 @@
           text: anchor.text
         };
       }
-      if (data[url].views === 1) anchor.attribute["style"].value = "color: green;";
-      if (data[url].views > 1) anchor.attribute["style"].value = "color: blue;";
+      if (data[url].views === 1) {
+        anchor.attribute["style"] = {
+          value: "color: green;"
+        };
+      }
+      if (data[url].views > 1) {
+        anchor.attribute["style"] = {
+          value: "color: blue;"
+        };
+      }
     }
     for (url in data) {
       record = data[url];
