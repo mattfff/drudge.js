@@ -16,10 +16,11 @@
       return false;
     }
     if (!(window.location.href.indexOf("drudgereport.com") >= 0)) return false;
+    return true;
   };
 
   loadLinks = function() {
-    var anchor, data, found, index, opacity, record, url, _len, _ref;
+    var anchor, count, data, found, index, opacity, record, url, _len, _ref;
     if (data = localStorage.getItem("drudge.js.links")) {
       data = JSON.parse(data);
     } else {
@@ -50,13 +51,16 @@
         anchor.setAttribute('style', "opacity: " + opacity);
       }
     }
+    count = 0;
     for (url in data) {
       if (!__hasProp.call(data, url)) continue;
       record = data[url];
       if (!(found.indexOf(url) > 0)) delete data[url];
+      count++;
     }
     localStorage.setItem("drudge.js.links", JSON.stringify(data));
-    return document.body.setAttribute("class", document.body.getAttribute("class") + "drudge_js_ran");
+    document.body.setAttribute("class", document.body.getAttribute("class") + "drudge_js_ran");
+    return console.log(count);
   };
 
   loadUI = function() {
@@ -87,13 +91,11 @@
     return document.getElementsByTagName("head")[0].appendChild(styles);
   };
 
-  if (checkRequirements()) {
+  if (checkRequirements() && checkContext()) {
     clearInterval(timer);
     loadLinks();
     loadUI();
     loadStyles();
-  } else {
-    alert("You're not at drudgereport.com, or your browser can't support this tool. Supported browsers are IE9, Chrome, Safari, or Firefox");
   }
 
 }).call(this);

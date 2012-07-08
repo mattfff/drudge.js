@@ -9,6 +9,7 @@ checkRequirements = ->
 checkContext = ->
   return false unless document.body.getAttribute("class") == null || document.body.getAttribute("class").indexOf("drudge_js_ran") < 0
   return false unless window.location.href.indexOf("drudgereport.com") >= 0
+  true
 
 loadLinks = ->
   if data = localStorage.getItem("drudge.js.links")
@@ -35,15 +36,18 @@ loadLinks = ->
       anchor.setAttribute 'style', "color: green;"
     else
       opacity = 1 - (data[url].views / 20) if data[url].views < 20
-      opacity = 0 if opacity < 0
+      opacity = 0.3 if opacity < 0.3
 
       anchor.setAttribute 'style', "opacity: " + opacity
 
+  count = 0
   for own url, record of data
     delete data[url] unless found.indexOf(url) > 0
+    count++
 
   localStorage.setItem "drudge.js.links", JSON.stringify(data)
   document.body.setAttribute "class", document.body.getAttribute("class") + "drudge_js_ran"
+  console.log count
 
 loadUI = ->
   navBar = document.createElement 'div'
@@ -72,11 +76,9 @@ loadStyles = ->
 
   document.getElementsByTagName("head")[0].appendChild(styles)
 
-if checkRequirements()
+if checkRequirements() && checkContext()
   clearInterval timer;
 
   loadLinks();
   loadUI();
   loadStyles();
-else
-  alert "You're not at drudgereport.com, or your browser can't support this tool. Supported browsers are IE9, Chrome, Safari, or Firefox"
