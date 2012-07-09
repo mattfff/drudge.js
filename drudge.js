@@ -50,11 +50,7 @@
       } else {
         if (data[url].views < 20) opacity = 1 - (data[url].views / 20);
         if (opacity < 0.3) opacity = 0.3;
-        if (hideThreshhold < data[url].views) {
-          anchor.setAttribute('style', 'display: none;');
-        } else {
-          anchor.setAttribute('style', 'opacity: ' + opacity);
-        }
+        anchor.setAttribute('style', 'opacity: ' + opacity);
       }
     }
     count = 0;
