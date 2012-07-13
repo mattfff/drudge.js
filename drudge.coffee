@@ -20,7 +20,7 @@ loadLinks = ->
   found = []
   for anchor, index in document.getElementsByTagName "a"
     url = anchor.getAttribute "href"
-    continue if url.length == 0
+    continue if !url || url.length == 0
     continue if url == "http://www.drudgereport.com/"
     
     found.push url;

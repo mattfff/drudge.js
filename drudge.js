@@ -31,7 +31,7 @@
     for (index = 0, _len = _ref.length; index < _len; index++) {
       anchor = _ref[index];
       url = anchor.getAttribute("href");
-      if (url.length === 0) continue;
+      if (!url || url.length === 0) continue;
       if (url === "http://www.drudgereport.com/") continue;
       found.push(url);
       anchor.setAttribute("target", "_blank");
